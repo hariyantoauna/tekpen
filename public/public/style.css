@@ -1,0 +1,21 @@
+.col-ef {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover .col-ef {
+    transform: translateY(-5px);
+}
+
+.card-ef {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+a:hover .card-ef {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
