@@ -1,5 +1,5 @@
 @foreach ($posts as $post)
-    <a href="">
+    <a href="/halaman/{{ $post->post->slug }}/{{ $post->post->reg }}">
         <div class="card mb-3  col-ef">
 
             <div class="card-body">

@@ -2,12 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Category;
-use Illuminate\Database\Seeder;
 use App\Models\Post;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Hastag;
+use App\Models\Applied;
+use App\Models\Category;
+use App\Models\Navigation;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -69,6 +71,8 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+
+        // hastag 
         Hastag::create([
             'post_id' => 1,
             'hastag' => 'wisata',
@@ -90,6 +94,43 @@ class DatabaseSeeder extends Seeder
             'post_id' => 2,
             'hastag' => 'kriminal',
 
+        ]);
+
+        // navigation 
+
+        Navigation::create([
+
+            'name' => "Pengaturan",
+            'url' => 'pengaturan',
+            'sort' => 1,
+            'applied_id' => 1,
+        ]);
+
+        Navigation::create([
+
+            'name' => "Menu",
+            'url' => 'menu',
+            'sort' => 2,
+            'applied_id' => 1,
+        ]);
+
+        Navigation::create([
+
+            'name' => "User",
+            'url' => 'user',
+            'sort' => 3,
+            'main_menu' => 1,
+            'applied_id' => 1,
+        ]);
+
+        // Applied 
+
+        Applied::create([
+            'applied' => "Blog Menu Utama"
+        ]);
+
+        Applied::create([
+            'applied' => "Dashboard Sidebar"
         ]);
     }
 }

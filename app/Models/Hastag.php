@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Hastag extends Model
 {
     use HasFactory;
-    // protected $guarded = ['id'];
+
+    protected $guarded = ['id'];
+    // protected $with = ['post'];
 
     public function post()
     {
