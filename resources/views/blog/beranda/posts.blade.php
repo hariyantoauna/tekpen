@@ -5,7 +5,8 @@
                 <a href="/halaman/{{ $post->slug }}/{{ $post->reg }}">
                     <div class="col col-ef">
                         <div class="card card-ef  h-100">
-                            <img src="https://source.unsplash.com/1200x400/?{{ $post->category->category }}"
+                            <img class="img-cover" style="height: 220px"
+                                src="https://source.unsplash.com/1200x1200/?{{ strtolower($post->category->category) }}"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>

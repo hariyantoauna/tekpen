@@ -24,14 +24,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::create([
-            'category' => 'Umum'
+            'category' => 'General'
         ]);
 
         Category::create([
-            'category' => 'Berita'
+            'category' => 'News'
         ]);
         Category::create([
-            'category' => 'Pengumuman'
+            'category' => 'Info'
         ]);
 
         Category::create([
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::create([
-            'category' => 'Iklan'
+            'category' => 'Advertisement'
         ]);
 
 
@@ -84,6 +84,11 @@ class DatabaseSeeder extends Seeder
         Hastag::create([
             'post_id' => 2,
             'hastag' => 'wisata',
+
+        ]);
+        Hastag::create([
+            'post_id' => 2,
+            'hastag' => 'kriminal',
 
         ]);
     }

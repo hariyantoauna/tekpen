@@ -11,6 +11,16 @@ class HastagController extends Controller
 
     public function show(Hastag $hastag)
     {
-        //
+
+
+
+        $data = [
+            'title' => ucfirst($hastag->hastag),
+            'posts' => Hastag::where('hastag', $hastag->hastag)->get(),
+
+
+        ];
+
+        return view('blog.hastag.index', $data);
     }
 }
