@@ -13,7 +13,7 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->take(6)->get();
         $data = [
             'title' => "Beranda",
             'posts' => $posts,

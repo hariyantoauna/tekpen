@@ -11,6 +11,8 @@ class HalamanController extends Controller
 
     public function show(Post $post)
     {
+
+
         $data = [
             'title' => $post->title,
             'post' => $post,

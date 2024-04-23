@@ -21,8 +21,15 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'HARIYANTO S. AUNA',
+            'name' => 'Hariyanto S. Auna',
+            'username' => 'hariyantosauna',
             'email' => 'hariyantosauna@gmail.com',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Nuriyati Hamzah',
+            'username' => 'nuriyatihamzah',
+            'email' => 'nurhamzah@gmail.com',
         ]);
 
         Category::create([
@@ -48,26 +55,26 @@ class DatabaseSeeder extends Seeder
 
 
         Post::create([
-            'title' => "Judul Post I",
+            'title' => "Dalam dunia pengembangan web, Laravel telah lama dikenal sebagai salah satu framework PHP yang paling kuat dan mudah digunakan",
             'article' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto explicabo quas dicta repellat, laborum itaque? Sapiente fugiat velit quidem ullam qui eveniet, maiores quo culpa voluptatum ad similique. Id debitis qui consectetur vitae. Qui provident deserunt minus sint deleniti odit numquam vero, cumque facilis optio dolores sapiente, accusantium, quasi quisquam necessitatibus culpa! Repudiandae reprehenderit maiores, voluptatum et accusantium error deserunt tempora mollitia necessitatibus veritatis amet officiis praesentium laboriosam beatae asperiores tempore magni! Accusamus tenetur ab, labore expedita aliquam architecto, temporibus praesentium natus debitis officia fuga. Dolores nemo repellat magnam iste fugit incidunt obcaecati commodi eius quos voluptatibus fuga quis ipsam culpa eaque numquam dignissimos, nihil totam facilis deserunt excepturi voluptatum dolorum sunt. Amet delectus dolore explicabo fugit eveniet nesciunt earum sit cupiditate corrupti expedita vel deleniti, soluta tempore ut quis libero quo laboriosam esse veritatis quas! Quia corporis esse tempore id, quod a accusamus suscipit porro praesentium blanditiis, voluptatum voluptas atque distinctio voluptatem debitis incidunt, quibusdam error! Recusandae aspernatur quisquam consequatur. Autem distinctio earum labore reiciendis iure suscipit enim modi eius soluta? Est tempore beatae blanditiis, unde omnis sapiente magni!",
             'category_id' => 2,
             'slug' => "judul_post_1",
             'published_at' => now(),
             'reg' => time(),
-            'author' => "Nuriyati",
+            'user_id' => 1,
 
 
         ]);
 
 
         Post::create([
-            'title' => "Judul Post II",
+            'title' => "Dengan komunitas yang besar dan dukungan yang berkelanjutan, Laravel terus berkembang pesat, membawa inovasi terbaru yang semakin meningkatkan kemampuannya",
             'article' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto explicabo quas dicta repellat, laborum itaque? Sapiente fugiat velit quidem ullam qui eveniet, maiores quo culpa voluptatum ad similique. Id debitis qui consectetur vitae. Qui provident deserunt minus sint deleniti odit numquam vero, cumque facilis optio dolores sapiente, accusantium, quasi quisquam necessitatibus culpa! Repudiandae reprehenderit maiores, voluptatum et accusantium error deserunt tempora mollitia necessitatibus veritatis amet officiis praesentium laboriosam beatae asperiores tempore magni! Accusamus tenetur ab, labore expedita aliquam architecto, temporibus praesentium natus debitis officia fuga. Dolores nemo repellat magnam iste fugit incidunt obcaecati commodi eius quos voluptatibus fuga quis ipsam culpa eaque numquam dignissimos, nihil totam facilis deserunt excepturi voluptatum dolorum sunt. Amet delectus dolore explicabo fugit eveniet nesciunt earum sit cupiditate corrupti expedita vel deleniti, soluta tempore ut quis libero quo laboriosam esse veritatis quas! Quia corporis esse tempore id, quod a accusamus suscipit porro praesentium blanditiis, voluptatum voluptas atque distinctio voluptatem debitis incidunt, quibusdam error! Recusandae aspernatur quisquam consequatur. Autem distinctio earum labore reiciendis iure suscipit enim modi eius soluta? Est tempore beatae blanditiis, unde omnis sapiente magni!",
             'category_id' => 3,
             'slug' => "judul_post_2",
             'published_at' => now(),
             'reg' => time(),
-            'author' => "Hariyanto",
+            'user_id' => 2,
 
         ]);
 
@@ -85,11 +92,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        Hastag::create([
-            'post_id' => 2,
-            'hastag' => 'wisata',
 
-        ]);
         Hastag::create([
             'post_id' => 2,
             'hastag' => 'kriminal',

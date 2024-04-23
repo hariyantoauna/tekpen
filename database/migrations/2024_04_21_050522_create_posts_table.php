@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
             $table->string('title')->nullable();
-            $table->string('author')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('slug')->nullable();
             $table->text('article')->nullable();
             $table->string('image')->nullable();

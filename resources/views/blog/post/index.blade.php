@@ -3,7 +3,7 @@
     <section class="container">
         <div class="row">
             <div class="col-lg-8">
-                @include('blog.halaman.article')
+                @include('blog.post.post')
             </div>
             <div class="col-lg-4">
                 @include('blog.sedibar.index')

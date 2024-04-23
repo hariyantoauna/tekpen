@@ -3,16 +3,20 @@
         src="https://source.unsplash.com/1200x1200/?{{ strtolower($post->category->category) }}" class="card-img-top"
         alt="...">
     <div class="card-body">
-        <h5 class="card-title">{{ $post->title }}</h5>
+        <h4 class="card-title">{{ $post->title }}</h4>
 
-        <small>
-            {{ $post->author }}&nbsp;&nbsp;&nbsp;{{ \Carbon\Carbon::parse($post->published_at)->diffForHumans() }}
+        <small><a class="a-set" href="/posts?author={{ $post->author->username }}"> {{ $post->author->name }}</a>
+            &nbsp;&nbsp;&nbsp;{{ \Carbon\Carbon::parse($post->published_at)->diffForHumans() }}
         </small>
+        <div class="my-3">
+            @foreach ($post->hastag as $tag)
+                <a class="btn btn-sm btn-secondary rounded-0" href="/posts?hastag={{ $tag->hastag }}">
+                    #{{ $tag->hastag }} </a>
+            @endforeach
+        </div>
+
         <p class="card-text my-4">{!! $post->article !!}</p>
 
-        @foreach ($post->hastag as $tag)
-            <a class="btn btn-sm btn-secondary rounded-0" href="/hastag/{{ $tag->hastag }}">
-                #{{ $tag->hastag }} </a>
-        @endforeach
+
     </div>
 </div>

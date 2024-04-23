@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Hastag;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -11,12 +12,47 @@ class Post extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['category', 'hastag'];
+    protected $with = ['category', 'hastag', 'author'];
+
+    public function scopeFilter($query, array $filters)
+    {
+
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('article', 'like', '%' . $search . '%');
+        });
+
+        $query->when(
+            $filters['hastag'] ?? false,
+            fn ($query, $hastag) =>
+            $query->whereHas(
+                'hastag',
+                fn ($query) =>
+                $query->where('hastag', $hastag)
+            )
+        );
+
+        $query->when(
+            $filters['author'] ?? false,
+            fn ($query, $author) =>
+            $query->whereHas(
+                'author',
+                fn ($query) =>
+                $query->where('username', $author)
+            )
+        );
+    }
 
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function hastag()
