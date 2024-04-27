@@ -21,10 +21,14 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-3">
-                <img style="height: 400px;"
-                    src="https://source.unsplash.com/1200x1200/?{{ strtolower($posts[0]->category->category) }}"
-                    class="card-img-top img-cover" alt="...">
+                @if ($posts[0]->set_image)
+                    <img style="height: 400px;"
+                        src="{{ $posts[0]->image ? asset('storage/' . $posts[0]->image) : 'https://source.unsplash.com/1200x1200/?' . strtolower($post[0]->category->category) }}"
+                        class="card-img-top img-cover" alt="...">
+                @endif
+
                 <div class="card-body">
+
                     <h5 class="card-title">{{ $posts[0]->title }}</h5>
                     <div class="my-3">
                         @foreach ($posts[0]->hastag as $tag)

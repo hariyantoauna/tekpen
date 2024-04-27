@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tagify - pupetteer tests</title>
+        <meta name="description" content="Converts HTML input/textarea into Tags component">
+        <meta name="author" content="Yair Even-Or">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="../dist/tagify.css">
+        <script src="../dist/tagify.min.js"></script>
+
+        <style>
+            body{ font: 16px Arial; }
+            form{
+                max-width:600px;
+            }
+
+            form > section{ margin-bottom: 2em; }
+
+            /* .tagify+input, .tagify+textarea {
+                position: initial !important;
+                left: 0 !important;
+                transform: none !important;
+                width: 100%;
+                margin-top: .2em;
+                min-height: 11ch;
+                background: powderblue;
+                font-family: "Fira Code";
+            } */
+
+            .tagify{
+                margin: .2em;
+                min-width: 400px;
+                /* margin-top: 95vh; */
+            }
+        </style>
+    </head>
+
+    <body>
+    <section>
+        <input >
+    </section>
+
+<script>
+// generate random whilist items (for the demo)
+var input = document.querySelector('input'),
+    button = input.nextElementSibling,  // "add new tag" action-button
+    tagify = new Tagify(input, {
+      whitelist: ['a', 'b', 'c'],
+      dropdown : {
+        enabled: 0,
+        appendTarget() {
+            return tagify?.DOM?.scope
+        }
+      }
+    });
+
+    // test ability to add multiple callbacks for the same event and then remove them all
+    tagify
+        .on('change', () => console.log(111))
+        .on('change', () => console.log(222))
+        .on('change', () => console.log(333))
+
+    // no logs should appear after calling below `off` method
+    tagify.off('change')
+    // tagify.removeAllCustomListeners()
+
+setTimeout(() => {
+  tagify.addEmptyTag()
+}, 1000)
+</script>
+</body>
+</html>

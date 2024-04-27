@@ -12,5 +12,10 @@
         "laravel-vite-plugin": "^1.0",
         "sass": "^1.56.1",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@yaireo/tagify": "^4.25.0",
+        "ckeditor4": "^4.24.0",
+        "sweetalert2": "^11.10.8"
     }
 }

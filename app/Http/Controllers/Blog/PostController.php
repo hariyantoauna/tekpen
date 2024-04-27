@@ -28,7 +28,7 @@ class PostController extends Controller
 
             'title' => "Beranda",
             'title_post' => $title_post,
-            'posts' => Post::latest()->filter(request(['search', 'hastag', 'author']))->paginate(10),
+            'posts' => Post::where('set_active', 1)->latest()->filter(request(['search', 'hastag', 'author']))->paginate(10),
 
         ];
 

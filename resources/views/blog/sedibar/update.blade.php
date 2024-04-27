@@ -4,7 +4,7 @@
             <div class="row g-0">
                 <div class="col-md-4">
                     <img class="img-cover"
-                        src="https://source.unsplash.com/1200x1200/?{{ strtolower($post->category->category) }}"
+                        src="{{ $post->image ? asset('storage/' . $post->image) : 'https://source.unsplash.com/1200x1200/?' . strtolower($post->category->category) }}"
                         class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">

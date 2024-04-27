@@ -16,7 +16,7 @@ if (!function_exists('getMenus')) {
 if (!function_exists('getPosts')) {
     function getPosts()
     {
-        return Post::where('published_at', "!=",  null)->latest()->take(6)->get();
+        return Post::where('set_active', 1)->latest()->take(6)->get();
     }
 }
 

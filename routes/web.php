@@ -7,6 +7,7 @@ use App\Http\Controllers\Blog\HastagController;
 use App\Http\Controllers\Blog\BerandaController;
 use App\Http\Controllers\Blog\HalamanController;
 use App\Http\Controllers\Blog\HastagsController;
+use App\Http\Controllers\Dashboard\DashboardPostController;
 
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/halaman/{post:slug}/{reg}', [HalamanController::class, 'show']);
@@ -16,3 +17,8 @@ Route::get('/posts', [PostController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/dashboard/post', DashboardPostController::class);
+Route::get('/dashboard/post/setup/{post}', [DashboardPostController::class, 'setup']);
+Route::post('/dashboard/post/set/{post}', [DashboardPostController::class, 'set']);
+Route::post('/dashboard/post/hatasg/delete/{hastag}', [DashboardPostController::class, 'hastag_delete']);

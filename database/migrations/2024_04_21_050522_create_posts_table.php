@@ -22,6 +22,12 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->unsignedInteger('category_id')->nullable();
             $table->integer('reg');
+            $table->integer('set_active')->nullable();
+            $table->integer('set_title')->nullable();
+            $table->integer('set_image')->nullable();
+            $table->integer('set_author')->nullable();
+            $table->integer('set_article')->nullable();
+            $table->integer('set_comment')->nullable();
         });
     }
 
