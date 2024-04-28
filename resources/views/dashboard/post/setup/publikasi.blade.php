@@ -7,7 +7,7 @@
                 <h6>{{ $post->title }}</h6>
             </div>
 
-            <form action="/dashboard/post/set/{{ $post->id }}" method="post">
+            <form id="myFormSave" action="/dashboard/post/set/{{ $post->id }}" method="post">
                 @csrf
                 <table class="table">
                     <tr>
@@ -102,7 +102,7 @@
                         <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" name="set_active" type="checkbox" role="switch"
-                                    id="set_active" value="1" {{ $post->set_active == 1 ? 'checked' : '' }}>
+                                    id="set_active" value="3" {{ $post->set_active == 3 ? 'checked' : '' }}>
                                 <label class="form-check-label" for="set_active"></label>
                             </div>
 
@@ -111,8 +111,9 @@
                 </table>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="button">Button</button>
-                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <a class="btn btn-dark me-md-2" href="/dashboard/post">Kembali</a>
+
+                    <button class="btn btn-primary" id="saveButton" type="submit">Simpan</button>
                 </div>
             </form>
         </div>

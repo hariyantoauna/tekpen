@@ -1,11 +1,12 @@
 @extends('layouts.dashboard')
 @section('content')
+    @include('sweetalert::alert')
     <section class="container my-4">
 
         <div class="card">
 
             <div class="card-body">
-                <form action="/dashboard/post/{{ $post->id }}" method="post" enctype="multipart/form-data">
+                <form id="myFormSave" action="/dashboard/post/{{ $post->id }}" method="post" enctype="multipart/form-data">
                     @method('put')
                     @csrf
 
@@ -41,10 +42,10 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="button">Batal</button>
-                        <button class="btn btn-primary" type="submit">Simpan</button>
-                    </div>
+                        <a class="btn btn-dark me-md-2" href="/dashboard/post">Kembali</a>
 
+                        <button class="btn btn-primary" id="saveButton" type="submit">Simpan</button>
+                    </div>
                 </form>
 
                 <hr>
@@ -52,7 +53,7 @@
                     @foreach ($hastag as $tag)
                         <div class="m-1"
                             style="padding-left: 10px; padding-top: 6px; padding-bottom: 6px; background-color: wheat; display: inline;">
-                            sadada
+                            {{ $tag->hastag }}
                             <form class="d-inline" action="/dashboard/post/hatasg/delete/{{ $tag->id }}"
                                 method="post">
                                 @csrf

@@ -9,6 +9,7 @@ use App\Models\Hastag;
 use App\Models\Applied;
 use App\Models\Category;
 use App\Models\Navigation;
+use App\Models\PostActive;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -55,6 +56,20 @@ class DatabaseSeeder extends Seeder
             'category' => 'Advertisement',
             'category_slug' => 'advertisement',
         ]);
+
+
+        PostActive::create([
+            'active' => 'Submit'
+        ]);
+
+        PostActive::create([
+            'active' => 'Review'
+        ]);
+
+        PostActive::create([
+            'active' => 'Diterbitkan'
+        ]);
+
 
 
 

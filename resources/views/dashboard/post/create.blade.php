@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 @section('content')
+    @include('sweetalert::alert')
     <section class="container my-4">
-        <form action="/dashboard/post" method="post" enctype="multipart/form-data">
+        <form id="myFormSave" action="/dashboard/post" method="post" enctype="multipart/form-data">
             @method('post')
             @csrf
             <div class="card">
@@ -42,8 +43,9 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="button">Batal</button>
-                        <button class="btn btn-primary" type="submit">Simpan</button>
+                        <a class="btn btn-dark me-md-2" href="/dashboard/post">Kembali</a>
+
+                        <button class="btn btn-primary" id="saveButton" type="submit">Simpan</button>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardPostController extends Controller
 {
@@ -35,7 +36,7 @@ class DashboardPostController extends Controller
 
 
         $data = [
-            'posts' => Post::latest()->filter(request(['search', 'hastag', 'author', 'category']))->paginate(10),
+            'posts' => Post::latest()->filter(request(['search', 'hastag', 'author', 'category', 'active']))->paginate(10),
         ];
         return view('dashboard.post.index', $data);
     }
@@ -66,6 +67,13 @@ class DashboardPostController extends Controller
         $data['reg'] = time();
         $data['article'] = $request->article;
         $data['published_at'] = now();
+        $data['set_active'] = 1;
+        $data['set_image'] = 1;
+        $data['set_title'] = 1;
+        $data['set_author'] = 1;
+        $data['set_article'] = 1;
+        $data['set_comment'] = 1;
+
 
         $data['user_id'] = 1;
         if ($request->file('image')) {
@@ -80,12 +88,12 @@ class DashboardPostController extends Controller
 
 
                 Hastag::create([
-                    'hastag' => $tag,
+                    'hastag' => strtolower(str_replace(' ', '_', $tag)),
                     'post_id' => $post->id
                 ]);
             }
         }
-
+        Alert::success('Hore!', 'Postingan berhasil ditambahkan');
         return  redirect('/dashboard/post');
     }
 
@@ -129,6 +137,11 @@ class DashboardPostController extends Controller
         $data['category_id'] = 1;
         // $data['reg'] = time();
 
+        if ($post->set_active != 3) {
+            $data['set_active'] = 2;
+        }
+
+
         if ($request->file('image')) {
             if ($post->image) {
                 Storage::delete($post->image);
@@ -145,7 +158,7 @@ class DashboardPostController extends Controller
 
 
                 Hastag::create([
-                    'hastag' => $tag,
+                    'hastag' => strtolower(str_replace(' ', '_', $tag)),
                     'post_id' => $post->id
                 ]);
             }
@@ -153,7 +166,7 @@ class DashboardPostController extends Controller
 
 
 
-
+        Alert::success('Hore!', 'Perubahan pada postingan berhasil dilakukan');
         return  redirect('/dashboard/post');
     }
 
@@ -165,6 +178,11 @@ class DashboardPostController extends Controller
             'post' => $post,
             'categorys' => Category::all()
         ];
+
+        $title = 'Delete Data!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
         return view('dashboard.post.setup', $data);
     }
 
@@ -180,19 +198,29 @@ class DashboardPostController extends Controller
         $data['set_comment'] = $request->set_comment;
 
         Post::where('id', $post->id)->update($data);
+        Alert::success('Hore!', 'Pengaturan telah berhasil dilakukan');
         return  redirect('/dashboard/post');
     }
 
 
 
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        //
+        $validator = $request->validate([
+            'confir' => 'required',
+        ]);
+
+
+
+        Post::where('id', $post->id)->delete();
+        Alert::success('Hore!', 'Postingan telah berhasil dihapus.');
+        return  redirect('/dashboard/post');
     }
 
     public function hastag_delete(Hastag $hastag)
     {
         Hastag::where('id', $hastag->id)->delete();
+
         return  redirect('/dashboard/post/' . $hastag->post_id . '/edit');
     }
 }

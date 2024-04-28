@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 @section('content')
+    @include('sweetalert::alert')
     <section class="container my-4">
         <div class="card">
 
@@ -37,19 +38,25 @@
                                 <th>Tanggal</th>
                                 <th class="w-50">Judul</th>
                                 <th>Author</th>
+                                <th>Status</th>
                                 <th>Kategori</th>
                                 <th>Hastag</th>
-                                <th>Aksi</th>
+                                <th>Setup</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($posts as $post)
                                 <tr>
-                                    <td>{{ $loop->iteration }}.</td>
-                                    <td></td>
+                                    <td>{{ $loop->iteration }}.
+                                    </td>
+                                    <td>{{ date('d-m-Y', strtotime($post->published_at)) }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td><a class="a-set"
                                             href="/dashboard/post?author={{ $post->author->username }}">{{ $post->author->name }}</a>
+                                    </td>
+                                    <td>
+                                        <a class="a-set"
+                                            href="/dashboard/post?active={{ $post->active->id }}">{{ $post->active->active }}</a>
                                     </td>
 
                                     <td><a class="a-set"
@@ -66,7 +73,7 @@
                                     </td>
                                     <td>
 
-                                        <a class="btn btn-sm btn-success m-1" href="/dashboard/post/{{ $post->id }}"><i
+                                        <a class="btn btn-sm btn-success m-1" href="/halaman/{{ $post->slug }}/{{ $post->reg }}"><i
                                                 class="bi bi-eye"></i></a>
                                         <a class="btn btn-sm btn-warning m-1"
                                             href="/dashboard/post/{{ $post->id }}/edit"><i

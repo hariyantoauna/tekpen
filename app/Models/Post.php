@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['category', 'hastag', 'author'];
+    protected $with = ['category', 'hastag', 'author', 'active'];
 
     public function scopeFilter($query, array $filters)
     {
@@ -52,12 +52,27 @@ class Post extends Model
                 $query->where('category_slug', $category)
             )
         );
+
+        $query->when(
+            $filters['active'] ?? false,
+            fn ($query, $active) =>
+            $query->whereHas(
+                'active',
+                fn ($query) =>
+                $query->where('id', $active)
+            )
+        );
     }
 
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function active()
+    {
+        return $this->belongsTo(PostActive::class, 'set_active');
     }
 
     public function author()
