@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $with = ['active',];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,5 +46,53 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('username', 'like', '%' . $search . '%');
+        });
+
+
+        $query->when(
+            $filters['active'] ?? false,
+            fn ($query, $active) =>
+            $query->whereHas(
+                'active',
+                fn ($query) =>
+                $query->where('id', $active)
+            )
+        );
+    }
+
+
+    public function active()
+    {
+        return $this->belongsTo(UserActive::class, 'user_active');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->biodata()->create([
+                'user_id' => $user->id, // Tambahkan user_id dengan nilai yang sama seperti id user yang baru dibuat
+
+                // tambahkan field lain yang ingin Anda isi secara otomatis
+            ]);
+        });
+
+
+        static::deleting(function ($user) {
+            $user->biodata()->delete();
+        });
+    }
+    public function biodata()
+    {
+        return $this->hasOne(Biodata::class);
     }
 }

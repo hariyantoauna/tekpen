@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->text('article')->nullable();
             $table->string('image')->nullable();
+            $table->string('dokumen')->nullable();
             $table->unsignedInteger('category_id')->nullable();
             $table->integer('reg');
             $table->integer('set_active')->nullable();

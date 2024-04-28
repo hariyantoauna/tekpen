@@ -36,6 +36,7 @@ class DashboardPostController extends Controller
 
 
         $data = [
+            'title' => 'Post',
             'posts' => Post::latest()->filter(request(['search', 'hastag', 'author', 'category', 'active']))->paginate(10),
         ];
         return view('dashboard.post.index', $data);
@@ -46,7 +47,10 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        $data = [
+            'title' => 'Tambah Postingan',
+        ];
+        return view('dashboard.post.create', $data);
     }
 
     /**
@@ -102,6 +106,11 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
+
+        $data = [
+            'title' => 'Show Postingan',
+        ];
+
         return view('dashboard.post.show', $post);
     }
 
@@ -111,9 +120,10 @@ class DashboardPostController extends Controller
     public function edit(Post $post)
     {
 
-        // dd($post);
+
 
         $data = [
+            'title' => 'Edit Postingan',
             'post' => $post,
             'hastag' => Hastag::where('post_id', $post->id)->get(),
         ];
@@ -175,6 +185,7 @@ class DashboardPostController extends Controller
     public function setup(Post $post)
     {
         $data = [
+            'title' => 'Setup Postingan',
             'post' => $post,
             'categorys' => Category::all()
         ];

@@ -10,7 +10,10 @@ use App\Models\Applied;
 use App\Models\Category;
 use App\Models\Navigation;
 use App\Models\PostActive;
+use App\Models\UserActive;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,30 +24,43 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        $editor = User::factory()->create([
             'name' => 'Hariyanto S. Auna',
             'username' => 'hariyantosauna',
             'email' => 'hariyantosauna@gmail.com',
+            'user_active' => 2
         ]);
 
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Nuriyati Hamzah',
             'username' => 'nuriyatihamzah',
             'email' => 'nurhamzah@gmail.com',
+            'user_active' => 1
+
         ]);
 
         Category::create([
-            'category' => 'General',
-            'category_slug' => 'general',
+            'category' => 'Umum',
+            'category_slug' => 'umum',
         ]);
 
         Category::create([
-            'category' => 'News',
-            'category_slug' => 'news',
+            'category' => 'Berita',
+            'category_slug' => 'berita',
         ]);
         Category::create([
             'category' => 'Info',
             'category_slug' => 'info',
+        ]);
+
+        Category::create([
+            'category' => 'Flayer',
+            'category_slug' => 'flayer',
+        ]);
+
+        Category::create([
+            'category' => 'Dokumen',
+            'category_slug' => 'dokumen',
         ]);
 
         Category::create([
@@ -53,9 +69,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::create([
-            'category' => 'Advertisement',
-            'category_slug' => 'advertisement',
+            'category' => 'Iklan',
+            'category_slug' => 'iklan',
         ]);
+
+
 
 
         PostActive::create([
@@ -69,7 +87,36 @@ class DatabaseSeeder extends Seeder
         PostActive::create([
             'active' => 'Diterbitkan'
         ]);
+        Role::create([
 
+            'name' => 'user',
+
+        ]);
+
+        $editor = Role::create([
+
+            'name' => 'author',
+
+        ]);
+
+        Role::create([
+
+            'name' => 'editor',
+
+        ]);
+
+        Permission::create([
+            'name' => 'read',
+        ]);
+        Permission::create([
+            'name' => 'create',
+        ]);
+        Permission::create([
+            'name' => 'update',
+        ]);
+        Permission::create([
+            'name' => 'delete',
+        ]);
 
 
 
@@ -110,6 +157,16 @@ class DatabaseSeeder extends Seeder
 
         Applied::create([
             'applied' => "Dashboard Sidebar"
+        ]);
+
+        UserActive::create([
+            'name' => 'Rigitrasi',
+
+        ]);
+
+        UserActive::create([
+            'name' => 'Aktif',
+
         ]);
     }
 }
