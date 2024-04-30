@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/u1607581/public_html/tekpen.fipb-ubmg.ac.id
+    - export DEPLOYPATH=/home/u1607581/public_html/tekpen.fipb-ubmg.ac.id/
 
     - /bin/cp -R src $DEPLOYPATH
