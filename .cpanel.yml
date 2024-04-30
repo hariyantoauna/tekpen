@@ -3,4 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/u1607581/public_html/tekpen.fipb-ubmg.ac.id
 
-    - /bin/ln -s /home/u1607581/repositories/tekpen/public/scr $DEPLOYPATH/scr
+    - /bin/cp -r * $DEPLOYPATH
