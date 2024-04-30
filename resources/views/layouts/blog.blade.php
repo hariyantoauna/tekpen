@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="/public/template/chariteam-1.0.0/img/favicon.ico" rel="icon">
+    <link href="/src/template/chariteam-1.0.0/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +23,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/public/template/chariteam-1.0.0/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/public/template/chariteam-1.0.0/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/src/template/chariteam-1.0.0/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/src/template/chariteam-1.0.0/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/public/template/chariteam-1.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/src/template/chariteam-1.0.0/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="/public/template/chariteam-1.0.0/css/style.css" rel="stylesheet">
+    <link href="/src/template/chariteam-1.0.0/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -60,7 +60,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
-                <img src="/public/dist/image/logo/brand.png" style="width: 250px;" alt="">
+                <img src="/src/dist/image/logo/brand.png" style="width: 250px;" alt="">
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">
@@ -102,7 +102,7 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="/public/template/chariteam-1.0.0/img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="/src/template/chariteam-1.0.0/img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="/public/template/chariteam-1.0.0/img/carousel-2.jpg" alt="Image">
+                    <img class="w-100" src="/src/template/chariteam-1.0.0/img/carousel-2.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
@@ -170,7 +170,7 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <img src="/public/dist/image/logo/brand.png" style="width: 200px;" alt="">
+                    <img src="/src/dist/image/logo/brand.png" style="width: 200px;" alt="">
                     <p>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed
                         stet lorem sit clita</p>
                     <div class="d-flex pt-2">
@@ -230,14 +230,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/template/chariteam-1.0.0/lib/wow/wow.min.js"></script>
-    <script src="/public/template/chariteam-1.0.0/lib/easing/easing.min.js"></script>
-    <script src="/public/template/chariteam-1.0.0/lib/waypoints/waypoints.min.js"></script>
-    <script src="/public/template/chariteam-1.0.0/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/public/template/chariteam-1.0.0/lib/parallax/parallax.min.js"></script>
+    <script src="/src/template/chariteam-1.0.0/lib/wow/wow.min.js"></script>
+    <script src="/src/template/chariteam-1.0.0/lib/easing/easing.min.js"></script>
+    <script src="/src/template/chariteam-1.0.0/lib/waypoints/waypoints.min.js"></script>
+    <script src="/src/template/chariteam-1.0.0/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/src/template/chariteam-1.0.0/lib/parallax/parallax.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/public/template/chariteam-1.0.0/js/main.js"></script>
+    <script src="/src/template/chariteam-1.0.0/js/main.js"></script>
 </body>
 
 </html>
