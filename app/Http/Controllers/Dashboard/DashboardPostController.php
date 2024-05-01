@@ -144,7 +144,10 @@ class DashboardPostController extends Controller
         ]);
 
         $data['slug'] =  strtolower(str_replace(' ', '_', $request->title));
-        $data['category_id'] = 1;
+        if ($post->category_id <= 1) {
+            $data['category_id'] = 1;
+        }
+
         // $data['reg'] = time();
 
         if ($post->set_active != 3) {
@@ -201,9 +204,14 @@ class DashboardPostController extends Controller
     {
         $data['published_at'] = $request->published_at;
         $data['category_id'] = $request->category_id;
+        if ($request->set_active) {
+            $data['set_active'] = $request->set_active;
+        }
+
+
         $data['set_title'] = $request->set_title;
         $data['set_image'] = $request->set_image;
-        $data['set_active'] = $request->set_active;
+
         $data['set_author'] = $request->set_author;
         $data['set_article'] = $request->set_article;
         $data['set_comment'] = $request->set_comment;
@@ -224,6 +232,7 @@ class DashboardPostController extends Controller
 
 
         Post::where('id', $post->id)->delete();
+        Hastag::where('post_id', $post->id)->delete();
         Alert::success('Hore!', 'Postingan telah berhasil dihapus.');
         return  redirect('/dashboard/post');
     }

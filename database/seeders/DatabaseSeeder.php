@@ -73,6 +73,11 @@ class DatabaseSeeder extends Seeder
             'category_slug' => 'iklan',
         ]);
 
+        Category::create([
+            'category' => 'Slaide',
+            'category_slug' => 'slaide',
+        ]);
+
 
 
 

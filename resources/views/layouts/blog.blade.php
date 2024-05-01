@@ -32,6 +32,29 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('') }}src/template/chariteam-1.0.0/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('') }}src/dist/css/blog.css">
+
+    <style>
+        .header-bag {
+            background-color: black;
+            height: 140px;
+            margin-bottom: 60px;
+        }
+
+        .slide-full {
+            width: 100vw;
+            /* Lebar slide sama dengan lebar viewport */
+            height: 100vh;
+            background-position: center top;
+            background-size: cover;
+            object-fit: cover;
+
+        }
+
+        .transparan-gradien {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(12, 12, 12));
+        }
+    </style>
 </head>
 
 <body>
@@ -69,7 +92,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="/" class="nav-item nav-link active">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="causes.html" class="nav-item nav-link">Causes</a>
                     <div class="nav-item dropdown">
@@ -85,19 +108,14 @@
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn btn-outline-primary py-2 px-3" href="">
-                        Pendaftaran
-                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </a>
+
                 </div>
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
 
-
+    @yield('content')
 
 
 

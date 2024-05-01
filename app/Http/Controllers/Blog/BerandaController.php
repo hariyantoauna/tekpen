@@ -17,6 +17,7 @@ class BerandaController extends Controller
         $data = [
             'title' => "Beranda",
             'posts' => $posts,
+            'slides' => Post::where('category_id', 8)->get(),
 
         ];
 

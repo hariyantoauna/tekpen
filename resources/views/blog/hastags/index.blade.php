@@ -1,5 +1,6 @@
 @extends('layouts.blog')
 @section('content')
+    @include('blog.header.header')
     <section class="container">
         <div class="row">
             <div class="col-lg-8">
